@@ -1,3 +1,7 @@
-# Monitoreo de medios
+<div align="center">
+  <img src="assets/icbf-logo.png" height="150">
+  <img src="assets/GAI.png" height="100">
+	<h1>Monitoreo de medios</h1>
+	<br>
+</div>
 
-![GAI](https://github.com/ICBF-Analitica/Monitoreo_de_medios/assets/79280614/791f1acd-6246-4f42-97c0-6db31c954749)
