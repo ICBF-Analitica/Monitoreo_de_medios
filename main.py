@@ -106,9 +106,9 @@ noticias_colombia['DiaNumero'] = noticias_colombia['fecha'].dt.day
 noticias_colombia = noticias_colombia.drop(['fecha', 'fecha_consulta'], axis=1)
 #Paso 7: Cargando base de datos guardada y uniendo datos nuevos en Python
 # Cargando base de datos guardada
-#noticias_colombia = pd.read_excel("Data/Consolidado/consolidado_noticias.xlsx")
+#noticias_colombia = pd.read_excel("Data/consolidado_noticias.xlsx")
 # Cargando base de datos guardada
-data_existente = pd.read_excel("Data/Consolidado/consolidado_noticias.xlsx")
+data_existente = pd.read_excel("Data/consolidado_noticias.xlsx")
 
 # Unir base de datos guardada con datos nuevos
 noticias_colombia1 = pd.concat([data_existente, noticias_colombia], ignore_index=True)
@@ -178,7 +178,7 @@ noticias_colombia['ciudad'] = noticias_colombia['ciudad'].replace(Palabras_ciuda
 
 
 #Guardando base de datos procesada de google noticias
-noticias_colombia.to_excel('Data/Consolidado/consolidado_noticias.xlsx', index=False)
+noticias_colombia.to_excel('Data/consolidado_noticias.xlsx', index=False)
 
 noticias_colombia.columns
 #<h1>TOKENIZACIÓN</h1>
@@ -291,7 +291,7 @@ df_resultado_final['tokens'] = df_resultado_final['tokens'].replace(Palabras_sin
 
 
 #Guardando base de datos Final
-df_resultado_final.to_excel('Data/Consolidado/df_resultado_final.xlsx', index=False)
+df_resultado_final.to_excel('Data/df_resultado_final.xlsx', index=False)
 #CREANDO DATA PARA MAPA
 import geopandas as gpd
 
@@ -299,7 +299,7 @@ import geopandas as gpd
 
 ciudades = gpd.read_file("Data/MGN_MPIO_POLITICO/MGN_MPIO_POLITICO.shp")
 
-data_final = pd.read_excel("Data/Consolidado/df_resultado_final.xlsx")
+data_final = pd.read_excel("Data/df_resultado_final.xlsx")
 
 # Cambiando nombre de columna
 ciudades = ciudades.rename(columns={'MPIO_CNMBR': 'ciudad'})
