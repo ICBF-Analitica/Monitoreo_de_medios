@@ -1,49 +1,21 @@
-name: Leer archivo desde Data Lake
- 
+name: Leer archivo desde Data Lake 
 on:
-  push:
-    branches:
-      - main
- 
-jobs:
-  leer-archivo:
-    runs-on: ubuntu-latest
- 
-    steps:
-      - name: Checkout código
-        uses: actions/checkout@v2
- 
-      - name: Leer archivo desde Data Lake
-        env:
-          AZURE_SAS_CONNECTION_STRING: ${{ secrets.TOKEN_URL }}
-        run: |
-          # Usa el valor del secreto para autenticarte con Data Lake Gen 2
-          # y leer el archivo deseado.
-          # Ejemplo: az storage blob download ...
-
-#on:   schedule:
-#    - cron:  '0 23 * * 5'
+  schedule:
+    - cron:  '0 23 * * 5'
     # This runs at 23:00 UTC each friday.
     # * is a special character in YAML so you have to quote this string
 
-
-#jobs:
-#run-script:
-#runs-on: ubuntu-latest
-
-#steps:
-
-#- name: Checkout repository
-#uses: actions/checkout@v2
-
-#- name: Set up Python
-#uses: actions/setup-python@v2
-
-#with:
-
-#python-version: '3.9'
-#- name: Install dependencies
-#run: pip install -r requirements.txt
-#- name: Run script
-
-#run: python script.py 
+jobs:
+ build:
+   runs-on: ubuntu-latest
+   steps:
+     - name: Checkout repository
+       uses: actions/checkout@v3
+     - name: Set up Python
+       uses: actions/setup-python@v4
+       with:
+         python-version: '3.9'
+     - name: Install dependencies
+       run: pip install -r requirements.txt
+     - name: Run script
+       run: python main.py 
