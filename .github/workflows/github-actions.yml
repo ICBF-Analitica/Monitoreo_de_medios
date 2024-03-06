@@ -1,9 +1,7 @@
 name: Leer archivo desde Data Lake 
 on:
-  schedule:
-    - cron:  '0 23 * * 5'
-    # This runs at 23:00 UTC each friday.
-    # * is a special character in YAML so you have to quote this string
+  push: 
+     branches: main
 
 jobs:
  build:
@@ -20,15 +18,4 @@ jobs:
      - name: Run script
        run: python main.py
        
- upload:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: bacongobbler/azure-blob-storage-upload@main
-        with:
-          source_dir: _dist
-          container_name: www
-          connection_string: ${{ secrets.token }}
-          extra_args: '--pattern *.tar.gz'
-          # WARNING: this will overwrite existing blobs in your blob storage
-          overwrite: 'true'
+
