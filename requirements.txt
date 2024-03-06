@@ -1,6 +1,6 @@
 pandas
-beautifulsoup4==4.7.1
 request
+bs4
 datetime
 openpyxl
 nltk
