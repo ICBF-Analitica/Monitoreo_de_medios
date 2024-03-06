@@ -18,4 +18,17 @@ jobs:
      - name: Install dependencies
        run: pip install -r requirements.txt
      - name: Run script
-       run: python main.py 
+       run: python main.py
+       
+ upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: bacongobbler/azure-blob-storage-upload@main
+        with:
+          source_dir: _dist
+          container_name: www
+          connection_string: ${{ secrets.token }}
+          extra_args: '--pattern *.tar.gz'
+          # WARNING: this will overwrite existing blobs in your blob storage
+          overwrite: 'true'
