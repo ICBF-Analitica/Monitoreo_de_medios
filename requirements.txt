@@ -1,5 +1,5 @@
 pandas
-beautifulsoup4==4.12.3
+beautifulsoup4==4.7.1
 request
 datetime
 openpyxl
