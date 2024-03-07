@@ -178,7 +178,7 @@ noticias_colombia['ciudad'] = noticias_colombia['ciudad'].replace(Palabras_ciuda
 
 
 #Guardando base de datos procesada de google noticias
-noticias_colombia.to_excel('./Data/consolidado_noticias.xlsx', index=False)
+noticias_colombia.to_excel('Data/consolidado_noticias.xlsx', index=False)
 
 noticias_colombia.columns
 #<h1>TOKENIZACIÓN</h1>
@@ -294,5 +294,5 @@ df_resultado_final['tokens'] = df_resultado_final['tokens'].replace(Palabras_sin
 
 
 #Guardando base de datos Final
-df_resultado_final.to_excel('./Data/df_resultado_final.xlsx', index=False)
+df_resultado_final.to_excel('Data/df_resultado_final.xlsx', index=False)
 print('Archivo guardado correctamente')
