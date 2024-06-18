@@ -134,14 +134,106 @@ noticias_colombia = noticias_colombia[filtro_no_fenomeno]
 
 
 filtro_no_pais = (~noticias_colombia['titulo'].str.contains('argentina', case=False) &
-                  ~noticias_colombia['titulo'].str.contains('mexico', case=False) &
+                  ~noticias_colombia['titulo'].str.contains('méxico', case=False) &
                   ~noticias_colombia['titulo'].str.contains('peru', case=False) &
                   ~noticias_colombia['titulo'].str.contains('ecuador', case=False) &
                   ~noticias_colombia['titulo'].str.contains('gaza', case=False) &
                   ~noticias_colombia['titulo'].str.contains('españa', case=False) &
                   ~noticias_colombia['titulo'].str.contains('uruguay', case=False) &
                   ~noticias_colombia['titulo'].str.contains('nicaragua', case=False) &
-                  ~noticias_colombia['titulo'].str.contains('brasil', case=False))
+                    ~noticias_colombia['titulo'].str.contains('brasil', case=False)&
+                    ~noticias_colombia['titulo'].str.contains('perú', case=False)&
+                    ~noticias_colombia['titulo'].str.contains('ecuador', case=False)&
+                    ~noticias_colombia['titulo'].str.contains('bolivia', case=False)&
+                    ~noticias_colombia['titulo'].str.contains('paraguay', case=False)&
+                    ~noticias_colombia['titulo'].str.contains('chile', case=False)&
+                    ~noticias_colombia['titulo'].str.contains('venezuela', case=False)&
+                    ~noticias_colombia['titulo'].str.contains('panamá', case=False)&
+                    ~noticias_colombia['titulo'].str.contains('puerto rico', case=False)&
+                    ~noticias_colombia['titulo'].str.contains('República Dominicana', case=False)&
+                    ~noticias_colombia['titulo'].str.contains('Costa Rica', case=False)&
+                    ~noticias_colombia['titulo'].str.contains('ee.uu', case=False)&
+                    ~noticias_colombia['titulo'].str.contains('estados unidos', case=False)&
+                    ~noticias_colombia['titulo'].str.contains('miami', case=False)&
+                    ~noticias_colombia['titulo'].str.contains('italia', case=False)&
+                    ~noticias_colombia['titulo'].str.contains('francia', case=False)&
+                    ~noticias_colombia['titulo'].str.contains('netflix', case=False)&
+
+                  ~noticias_colombia['fuente'].str.contains('argentina', case=False) &
+                  ~noticias_colombia['fuente'].str.contains('méxico', case=False) &
+                  ~noticias_colombia['fuente'].str.contains('peru', case=False) &
+                  ~noticias_colombia['fuente'].str.contains('ecuador', case=False) &
+                  ~noticias_colombia['fuente'].str.contains('gaza', case=False) &
+                  ~noticias_colombia['fuente'].str.contains('españa', case=False) &
+                  ~noticias_colombia['fuente'].str.contains('uruguay', case=False) &
+                  ~noticias_colombia['fuente'].str.contains('nicaragua', case=False) &
+                    ~noticias_colombia['fuente'].str.contains('brasil', case=False)&
+                    ~noticias_colombia['fuente'].str.contains('perú', case=False)&
+                    ~noticias_colombia['fuente'].str.contains('ecuador', case=False)&
+                    ~noticias_colombia['fuente'].str.contains('bolivia', case=False)&
+                    ~noticias_colombia['fuente'].str.contains('paraguay', case=False)&
+                    ~noticias_colombia['fuente'].str.contains('chile', case=False)&
+                    ~noticias_colombia['fuente'].str.contains('venezuela', case=False)&
+                    ~noticias_colombia['fuente'].str.contains('panamá', case=False)&
+                    ~noticias_colombia['fuente'].str.contains('puerto rico', case=False)&
+                    ~noticias_colombia['fuente'].str.contains('República Dominicana', case=False)&
+                    ~noticias_colombia['fuente'].str.contains('Costa Rica', case=False)&
+                    ~noticias_colombia['fuente'].str.contains('ee.uu', case=False)&
+                    ~noticias_colombia['fuente'].str.contains('estados unidos', case=False)&
+                    ~noticias_colombia['fuente'].str.contains('miami', case=False)&
+                    ~noticias_colombia['fuente'].str.contains('italia', case=False)&
+                    ~noticias_colombia['fuente'].str.contains('francia', case=False)&
+                    ~noticias_colombia['fuente'].str.contains('netflix', case=False)
+                  )
+
+
+
+# Lista de fuentes a filtrar
+fuentes_a_filtrar = [
+    "Voz de América", "Vatican News - Español", "Anadolu Agency | Español", "Europa Press", "EL ESPAÑOL", "Euronews Español", "ABC Noticias MX",
+    "Periódico Excélsior", "Diario de Mallorca", "ABC de Sevilla", "La Prensa Nicaragua", "Soziable.es", "El Diario NY", "El Sol de Cuernavaca",
+    "Noticias del Ministerio de Gobernación de Guatemala", "El Cuco Digital", "Telemundo 44 Washington DC", "La Opinión Austral", "El Comercio Perú",
+    "Telemundo Nueva Inglaterra", "WPLG Local 10", "La Razón (Bolivia)", "Diario de Sevilla", "TV Azteca Guatemala", "Telemundo San Antonio",
+    "El Diario de Yucatán", "WHO | World Health Organization", "La Voz de Galicia", "El Tiempo Latino", "Radio 3 Cadena Patagonia", "BioBioChile",
+    "El Siglo Durango", "Diario Perú21", "La República Perú", "El Heraldo de Chihuahua", "Telediario CDMX", "Okdiario", "Difoosion: Andro4all, Alfa Beta Juega, Urban Tecno, iPadizate y más",
+    "Quadratín Yucatán", "El Periódico de Aragón", "Soy502", "Telemundo 33", "Fiscalía General del Estado de Chiapas", "La Prensa de Honduras",
+    "Telemundo Area de la Bahia", "Opinión Bolivia", "La Estrella de Panamá", "Goal.com", "National Geographic en Español", "El ideal gallego",
+    "Telemundo Atlanta", "Telemundo Laredo", "Telemundo Fresno", "El Independiente", "Sevilla Actualidad", "AL DÍA | ARGENTINA -", "Metro World News",
+    "La Nación Costa Rica", "WIRED en Español", "Crónica de Xalapa", "TV Azteca", "Telemundo Yucatán", "12News.com", "Europa FM", "Noticias Argentinas",
+    "Woman", "El Periódico de España", "C5N", "www.lagrannoticia.com", "The Dallas Morning News", "Metro Ecuador", "Diario de México", "Fiscalía General del Estado de Morelos",
+    "Ecuador 221", "El Diario Vasco", "WPEC", "Diario Regional de Aysen", "Bloomberg Línea Latinoamérica", "Forbes Argentina", "Marca México", "Noticias de Cuba en Miami",
+    "Save the Children", "El Comercio: Diario de Asturias", "Telenoche", "CatalunyaPress", "El Norte de Castilla", "Valparaíso Informa", "Gobierno del Perú",
+    "Últimas noticias de Cuba y los Cubanos por el Mundo", "Prensa Arizona", "Business Insider España", "Microjuris al Día", "ADN Chile", "Eroski Consumer",
+    "Universidad de Málaga", "Resumen Latinoamericano", "The Associated Press", "Periódico La República (Costa Rica)", "BigBangNews", "The Conversation",
+    "La Voz de Córdoba", "Telemundo New York", "Univision Noticias", "EL PAÍS México", "La Mente es Maravillosa", "Telemundo Las Vegas", "La Nueva España",
+    "Gobierno de Chile", "Terra Chile", "PuenteLibre.mx", "Telemundo Puerto Rico", "The New York Times (Español)", "Periódico Mirador", "Onda Naranja Cope",
+    "Extremadura 7Días", "Viva Valencia", "InfoBrisas Mar del Plata - Radio Brisas Online", "Diario San Rafael", "El HuffPost", "Urgente Ayacucho", "Jujuy al día",
+    "hch.tv", "Los Andes (Mendoza)", "Infobae España", "Vida Extra", "Telemundo Houston", "El Comercio Ecuador", "Tribuna de la Bahía", "Marca USA", "Viva Málaga",
+    "0223 Diario digital de Mar del Plata", "El Vocero de Puerto Rico", "InfoBrisas Mar del Plata - Radio Brisas Online", "Ciudad Florida", "El Comercio Perú",
+    "W Radio México", "ElDesmarque", "La Opinión de Zamora", "Enlace Latino NC", "Radio Panamá", "El Heraldo de Juárez", "TV Azteca Morelos", "Telemundo Dallas",
+    "El Nostre Ciutat", "El Cronista - México", "NTR Zacatecas .com", "Informate Salta", "The Arizona Republic", "Tiempo Argentino", "Diario Madridista",
+    "Jenesaispop.com", "Ciudad Magazine", "La Voz de Lanzarote", "El País Uruguay", "AS USA Latino", "Viajestic", "EL IMPARCIAL México", "Univision 62 Austin",
+    "Diario Palentino", "Diario Córdoba", "Atlético de Madrid", "El Financiero Costa Rica", "EL COMERCIO (Ecuador)", "Diario del Norte.net", "Panamericana Televisión",
+    "El Siglo Panamá", "Rumbo a Tokio", "SoyChile", "The Clinic", "elperiodico.com", "Voz.us", "El Imparcial de Oaxaca", "SensaCine México", "EXA FM", "WPLG Local 10",
+    "HealthyChildren.org", "La Red Hispana", "United Nations Development Programme", "Soy502", "Periódico Excélsior", "Telemundo New York", "iLeon.com", "Palenciaenlared.es",
+    "Noticias Iruya.com", "The New York Times (Español)", "Diario Mendoza", "Soy502", "La Jornada Maya", "El Cronista - USA", "Telefe Cordoba", "Uniradio Informa Baja California",
+    "La Razón de México", "Telemundo San Diego", "La Voz de Misiones", "Los Andes (Mendoza)", "Noticias Voz e Imagen de Oaxaca", "Soy502", "Globovision",
+    "Jay Fonseca", "El Heraldo de México", "Hispanic PR Wire", "Noticias de San Francisco", "ProCine CDMX", "Vanguardia MX", "El Tiempo Latino", "DW (Español)",
+    "Euronews Español", "Telemundo 40", "El País Uruguay", "Infobae Perú", "Diario La Prensa Riobamba", "ABC7 Los Angeles", "Noticias del Ministerio de Gobernación de Guatemala",
+    "Telemundo Arizona", "Diario del Yaqui", "Telemundo Atlanta", "El Tiempo Latino", "Telemundo New York", "El Tiempo Latino", "Diario16plus", "Telemundo New York",
+    "DW Español", "Terra.com", "elperiodico.com", "Globovision", "El Comercio Perú", "Infobae Perú", "Exitoína", "Telemundo New York", "Globovision",
+    "El Tiempo Latino", "elperiodico.com", "Globovision", "El Comercio Ecuador", "Noticias del Ministerio de Gobernación de Guatemala", "Noticias de Cuba en Miami",
+    "Voz de América", "Soy502", "Periódico La República (Costa Rica)", "La Nación (Chile)", "El Comercio Ecuador", "Noticias del Ministerio de Gobernación de Guatemala",
+    "Noticias de Cuba en Miami", "Infobae México", "Noticias de Cuba en Miami", "Infobae España", "La Mente es Maravillosa", "Soy502", "Noticias del Ministerio de Gobernación de Guatemala",
+    "Soy502", "Soy502", "Noticias del Ministerio de Gobernación de Guatemala", "Soy502", "Noticias del Ministerio de Gobernación de Guatemala"
+]
+
+# Filtrar las fuentes 
+noticias_colombia_filtrado = noticias_colombia[~noticias_colombia['fuente'].isin(fuentes_a_filtrar)]
+
+
+
+
 
 
 # Reindexar la serie booleana filtro_no_fenomeno para que coincida con el índice del DataFrame noticias_colombia
