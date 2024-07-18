@@ -65,7 +65,8 @@ ciudades = ["Leticia", "Medellín", "Arauca", "Barranquilla", "Cartagena", "Tunj
 # Función para asignar una nueva columna llamada ciudad donde itera y agrega un campo con el nombre de la ciudad basándose en el título
 def asignar_ciudad(titulo):
     for ciudad in ciudades:
-        if ciudad.lower() in titulo.lower():
+        # Utilizamos \b para buscar palabras exactas, ignorando mayúsculas y minúsculas
+        if re.search(r'\b' + re.escape(ciudad) + r'\b', titulo, re.IGNORECASE):
             return ciudad
     return None
 
