@@ -5,6 +5,7 @@ import requests
 from datetime import datetime
 
 import openpyxl
+import re
 
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
