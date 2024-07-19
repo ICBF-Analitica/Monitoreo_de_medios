@@ -5,3 +5,4 @@ datetime
 openpyxl
 nltk
 geopandas
+re
