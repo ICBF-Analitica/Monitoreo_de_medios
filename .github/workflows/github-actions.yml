@@ -1,9 +1,7 @@
 name: Leer archivo desde Data Lake 
 on:
   schedule:
-    - cron: "55 20 * * *"
-
-workflow_dispatch: # Esto permite ejecutar manualmente
+    - cron: "20 21 * * *"
 
 jobs:
  build:
