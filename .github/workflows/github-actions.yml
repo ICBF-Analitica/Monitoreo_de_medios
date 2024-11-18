@@ -1,7 +1,9 @@
 name: Leer archivo desde Data Lake 
 on:
   schedule:
-    - cron: "16 20 * * *"
+    - cron: "55 20 * * *"
+
+workflow_dispatch: # Esto permite ejecutar manualmente
 
 jobs:
  build:
@@ -17,6 +19,9 @@ jobs:
        run: pip install --upgrade pip
      - name: Install dependencies
        run: pip install -r requirements.txt
+     - name: Download NLTK data
+       run: |
+          python -m nltk.downloader punkt
      - name: Run script
        run: |
         echo main.py
