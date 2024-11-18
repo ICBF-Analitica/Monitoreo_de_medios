@@ -278,9 +278,10 @@ noticias_colombia.columns
 #<h1>TOKENIZACIÓN</h1>
 import pandas as pd
 import nltk
+nltk.download()
 
 nltk.download('stopwords')
-nltk.download('punkt_tab')
+#nltk.download('punkt')
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 
