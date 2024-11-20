@@ -9,27 +9,48 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # Paso 1: Clonar el repositorio
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      # Paso 2: Configurar Python
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
           python-version: '3.9'
-      - name: update prp
+
+      # Paso 3: Actualizar pip
+      - name: Update pip
         run: pip install --upgrade pip
+
+      # Paso 4: Instalar dependencias desde requirements.txt
       - name: Install dependencies
         run: pip install -r requirements.txt
+
+      # Paso 5: Descargar datos de NLTK
+      - name: Download NLTK data
+        run: |
+          python -m nltk.downloader punkt
+          python -m nltk.downloader stopwords
+          mkdir -p ~/nltk_data/tokenizers
+          mv ~/nltk_data/tokenizers/punkt ~/nltk_data/tokenizers/punkt_tab || true
+
+      # Paso 6: Ejecutar el script
       - name: Run script
         run: |
-          echo main.py
+          echo "Ejecutando main.py"
           python main.py
-      - name: commit files
+
+      # Paso 7: Realizar commit de los archivos actualizados (si es necesario)
+      - name: Commit files
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
           git diff-index --quiet HEAD || (git commit -a -m "updated files" --allow-empty)
-      - name: push changes
+
+      # Paso 8: Hacer push de los cambios al repositorio
+      - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
