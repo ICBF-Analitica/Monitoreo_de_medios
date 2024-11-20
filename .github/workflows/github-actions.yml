@@ -1,7 +1,7 @@
 name: Leer archivo desde Data Lake 
 on:
   schedule:
-    - cron: "45 21 * * *"
+    - cron: "07 16 * * *"
 
 jobs:
  build:
