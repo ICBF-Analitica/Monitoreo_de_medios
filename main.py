@@ -12,6 +12,11 @@ from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 from nltk.probability import FreqDist
 
+import nltk
+nltk.download('punkt', quiet=True)       # Tokenización
+nltk.download('stopwords', quiet=True)  # Stop words en español
+
+
 # Función google_Noticias que se conecta a la pagina de google noticias y extrae los datos de Titulo, Fuente y fecha de cada noticia
 # y al final crea un dataframe de las noticias con respecto a la niñez.
 
@@ -276,12 +281,8 @@ noticias_colombia.to_excel('Data/consolidado_noticias.xlsx', index=False)
 
 noticias_colombia.columns
 #<h1>TOKENIZACIÓN</h1>
-import pandas as pd
-import nltk
-nltk.download()
 
-nltk.download('stopwords')
-#nltk.download('punkt')
+
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 
