@@ -30,10 +30,9 @@ jobs:
       # Paso 5: Descargar datos de NLTK
       - name: Download NLTK data
         run: |
-          python -m nltk.downloader punkt
-          python -m nltk.downloader stopwords
-          mkdir -p ~/nltk_data/tokenizers
-          mv ~/nltk_data/tokenizers/punkt ~/nltk_data/tokenizers/punkt_tab || true
+          python -m nltk.downloader punkt stopwords
+          mkdir -p /usr/share/nltk_data/tokenizers/punkt_tab
+          cp -r /usr/share/nltk_data/tokenizers/punkt /usr/share/nltk_data/tokenizers/punkt_tab || true
 
       # Paso 6: Ejecutar el script
       - name: Run script
