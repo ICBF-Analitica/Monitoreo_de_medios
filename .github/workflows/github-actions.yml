@@ -1,36 +1,36 @@
-name: Leer archivo desde Data Lake 
+name: Leer archivo desde Data Lake
+
 on:
   schedule:
-    - cron: "07 16 * * *"
+    - cron: "45 21 * * *"  # Programación automática
+  workflow_dispatch:       # Permite la ejecución manual
 
 jobs:
- build:
-   runs-on: ubuntu-latest
-   steps:
-     - name: Checkout repository
-       uses: actions/checkout@v3
-     - name: Set up Python
-       uses: actions/setup-python@v3
-       with:
-         python-version: '3.9'
-     - name: update prp
-       run: pip install --upgrade pip
-     - name: Install dependencies
-       run: pip install -r requirements.txt
-     - name: Run script
-       run: |
-        echo main.py
-        python main.py
-     - name: commit files
-       run: |
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'
+      - name: update prp
+        run: pip install --upgrade pip
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run script
+        run: |
+          echo main.py
+          python main.py
+      - name: commit files
+        run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
           git diff-index --quiet HEAD || (git commit -a -m "updated files" --allow-empty)
-
-     - name: push changes
-       uses: ad-m/github-push-action@v0.6.0
-       with:
+      - name: push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main 
-
+          branch: main
