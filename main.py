@@ -14,8 +14,12 @@ from nltk.probability import FreqDist
 
 # Descargar recursos necesarios de NLTK
 import nltk
+nltk.data.path.append('/usr/share/nltk_data')  # Añadir una ruta para descargar datos
 nltk.download('punkt', quiet=True)
 nltk.download('stopwords', quiet=True)
+
+
+
 
 # Función google_Noticias que se conecta a la pagina de google noticias y extrae los datos de Titulo, Fuente y fecha de cada noticia
 # y al final crea un dataframe de las noticias con respecto a la niñez.
