@@ -31,6 +31,18 @@ def google_noticias(url):
     # Extraer título de la noticia
     titulo_noticia = [h.text for h in soup.find_all('a', class_='JtKRv')]
 
+    # Extraer enlaces de las noticias
+    enlaces_elementos = soup.find_all('a', class_='WwrzSb')
+    link_noticia = []
+    
+    for enlace in enlaces_elementos:
+        href = enlace.get('href', '')
+        if href:
+            link_completo = f"https://news.google.com{href}"
+            link_noticia.append(link_completo)
+        else:
+            link_noticia.append('')
+
     # Extraer fuente de la noticia
     fuente_noticia = [div.text for div in soup.find_all('div', class_='vr1PYe')]
 
@@ -40,6 +52,7 @@ def google_noticias(url):
     # Crear DataFrame
     df_noticias = pd.DataFrame({
         'titulo': titulo_noticia,
+        'link': link_noticia,
         'fuente': fuente_noticia,
         'fecha': pd.to_datetime(fecha_noticia),
         'fecha_consulta': datetime.now()
