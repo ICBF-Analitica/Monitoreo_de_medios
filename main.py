@@ -319,6 +319,7 @@ for i, row in noticias_colombia.iterrows():
             # Crear un nuevo diccionario para cada palabra
             nueva_fila = {
                 'titulo': row['titulo'],
+                'link':row['link'],
                 'fuente': row['fuente'],
                 'ciudad': row['ciudad'],
                 'departamento': row['departamento'],
