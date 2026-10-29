@@ -6,6 +6,7 @@ from datetime import datetime
 
 import openpyxl
 import re
+import xml.etree.ElementTree as ET
 
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
@@ -21,51 +22,47 @@ nltk.download('stopwords', quiet=True)
 
 
 
-# Función google_Noticias que se conecta a la pagina de google noticias y extrae los datos de Titulo, Fuente y fecha de cada noticia
-# y al final crea un dataframe de las noticias con respecto a la niñez.
+# Función google_noticias: lee el FEED RSS de Google News y extrae Titulo, Link,
+# Fuente y Fecha de cada noticia, devolviendo un DataFrame.
+# Se usa el RSS (y no el raspado del HTML) porque es mucho mas estable: no depende
+# de clases CSS que Google cambia, y no es bloqueado por Google como la busqueda HTML.
 
 def google_noticias(url):
-    response = requests.get(url)
-    soup = BeautifulSoup(response.text, 'html.parser')
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+                             'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36'}
+    response = requests.get(url, headers=headers, timeout=30)
+    root = ET.fromstring(response.content)
 
-    # Extraer título de la noticia
-    titulo_noticia = [h.text for h in soup.find_all('a', class_='JtKRv')]
-
-    # Extraer enlaces de las noticias
-    enlaces_elementos = soup.find_all('a', class_='WwrzSb')
-    link_noticia = []
-    
-    for enlace in enlaces_elementos:
-        href = enlace.get('href', '')
-        if href:
-            link_completo = f"https://news.google.com{href}"
-            link_noticia.append(link_completo)
-        else:
-            link_noticia.append('')
-
-    # Extraer fuente de la noticia
-    fuente_noticia = [div.text for div in soup.find_all('div', class_='vr1PYe')]
-
-    # Extraer fecha de la noticia
-    fecha_noticia = [time['datetime'] for time in soup.find_all('time', class_='hvbAAd')]
+    titulo_noticia, link_noticia, fuente_noticia, fecha_noticia = [], [], [], []
+    for item in root.findall('.//item'):
+        titulo = (item.findtext('title') or '').strip()
+        fuente_el = item.find('source')
+        fuente = (fuente_el.text or '').strip() if fuente_el is not None else ''
+        # El RSS trae el titulo como "Titular - Fuente"; quitamos el sufijo de la fuente.
+        if fuente and titulo.endswith(' - ' + fuente):
+            titulo = titulo[:-(len(fuente) + 3)].strip()
+        titulo_noticia.append(titulo)
+        link_noticia.append((item.findtext('link') or '').strip())
+        fuente_noticia.append(fuente)
+        fecha_noticia.append(item.findtext('pubDate'))
 
     # Crear DataFrame
     df_noticias = pd.DataFrame({
         'titulo': titulo_noticia,
         'link': link_noticia,
         'fuente': fuente_noticia,
-        'fecha': pd.to_datetime(fecha_noticia),
+        'fecha': pd.to_datetime(fecha_noticia, errors='coerce', utc=True),
         'fecha_consulta': datetime.now()
     })
 
     return df_noticias
-# URLs de noticias en google noticias.
+# URLs de noticias en google noticias (endpoint RSS).
 
-url_niño = "https://news.google.com/search?q=ni%C3%B1o&hl=es-419&gl=CO&ceid=CO%3Aes-419"
-url_niña = "https://news.google.com/search?q=ni%C3%B1a&hl=es-419&gl=CO&ceid=CO%3Aes-419"
-url_adolescente = "https://news.google.com/search?q=adolescente&hl=es-419&gl=CO&ceid=CO%3Aes-419"
-url_bebe = "https://news.google.com/search?q=bebe&hl=es-419&gl=CO&ceid=CO%3Aes-419"
-url_menor_edad = "https://news.google.com/search?q=menor%20de%20edad&hl=es-419&gl=CO&ceid=CO%3Aes-419"
+url_niño = "https://news.google.com/rss/search?q=ni%C3%B1o&hl=es-419&gl=CO&ceid=CO%3Aes-419"
+url_niña = "https://news.google.com/rss/search?q=ni%C3%B1a&hl=es-419&gl=CO&ceid=CO%3Aes-419"
+url_adolescente = "https://news.google.com/rss/search?q=adolescente&hl=es-419&gl=CO&ceid=CO%3Aes-419"
+url_bebe = "https://news.google.com/rss/search?q=bebe&hl=es-419&gl=CO&ceid=CO%3Aes-419"
+url_menor_edad = "https://news.google.com/rss/search?q=menor%20de%20edad&hl=es-419&gl=CO&ceid=CO%3Aes-419"
 
 # Ejecutar la función google_noticias para cada url y extraer los datos.
 
