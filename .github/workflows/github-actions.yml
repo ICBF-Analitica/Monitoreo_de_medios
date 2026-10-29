@@ -8,15 +8,17 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write        # necesario para que el workflow pueda hacer push
     steps:
       # Paso 1: Clonar el repositorio
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       # Paso 2: Configurar Python
       - name: Set up Python
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.9'
+          python-version: '3.12'
       # Paso 3: Actualizar pip
       - name: Update pip
         run: pip install --upgrade pip
@@ -44,7 +46,4 @@ jobs:
           git diff-index --quiet HEAD || (git commit -a -m "updated files" --allow-empty)
       # Paso 8: Hacer push de los cambios al repositorio
       - name: Push changes
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
+        run: git push origin main
