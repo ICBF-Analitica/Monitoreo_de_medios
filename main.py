@@ -407,3 +407,12 @@ df_resultado_final['tokens'] = df_resultado_final['tokens'].replace(Palabras_sin
 #Guardando base de datos Final
 df_resultado_final.to_excel('Data/df_resultado_final.xlsx', index=False)
 print('Archivo guardado correctamente')
+
+
+# Limpieza posterior a la auditoria (oct-2026): corrige medios, ciudad, departamento, maltrato, sentimiento, y quita noticias
+# del exterior y de temas que no son ninez. Ver limpieza/limpiar.py. Si falla, queda el archivo original de arriba.
+try:
+    from limpieza.limpiar import limpiar_datos
+    limpiar_datos()
+except Exception as e:
+    print('AVISO: la limpieza fallo y se conserva el df_resultado_final original:', repr(e))
