@@ -416,3 +416,12 @@ try:
     limpiar_datos()
 except Exception as e:
     print('AVISO: la limpieza fallo y se conserva el df_resultado_final original:', repr(e))
+
+
+# Hechos Reportados: registro de hechos de violencia sexual contra la ninez desde las noticias (limpieza/hechos.py).
+# Escribe Data/hechos/hechos.csv y noticias_hechos.csv, que Power BI lee de GitHub. Si falla, quedan los archivos anteriores.
+try:
+    from limpieza.hechos import generar_hechos
+    generar_hechos()
+except Exception as e:
+    print('AVISO: no se pudo actualizar Hechos Reportados; se conservan los archivos anteriores:', repr(e))
