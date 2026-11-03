@@ -360,7 +360,9 @@ VOCABULARIO_EXTERIOR = re.compile(
     r"\bguardia civil\b|\bmossos\b|\bertzaintza\b|\baudiencia (provincial|nacional|de \w+)\b|"
     r"\bpolicia local\b|\bcarabineros\b|\bremiser|\bfgr\b|\bfiscalia general de la republica\b|"
     r"\bescuadron violeta\b|\bministerio publico fiscal\b|\bpiso tutelado\b|\bjuzgado de instruccion\b|"
-    r"\bpolicia de la ciudad\b|\bsspc\b|\bsscbc\b|\banep\b|\bformalizad[oa]s?\b|\bsename\b|\bdif\b")
+    r"\bpolicia de la ciudad\b|\bsspc\b|\bsscbc\b|\banep\b|\bformalizad[oa]s?\b|\bsename\b|\bdif\b|"
+    # cesfam: consultorio de salud de Chile ("Cesfam de Cartagena" es Cartagena de Chile, no Cartagena de Indias)
+    r"\bcesfam\b|\bformaliza(n|ron)\b")
 
 
 def menciona_exterior(t):

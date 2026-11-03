@@ -1,16 +1,16 @@
 Departamento,Recientes,Esperados,Variacion,Alerta,Periodo
 Quindío,3,0.2,1400.0,Aumento,2026-09-07 a 2026-11-01
-Antioquia,4,4.1,-2.0,Normal,2026-09-07 a 2026-11-01
+Antioquia,4,3.9,3.0,Normal,2026-09-07 a 2026-11-01
 Atlántico,2,0.8,150.0,Normal,2026-09-07 a 2026-11-01
-Bolívar,2,1.4,43.0,Normal,2026-09-07 a 2026-11-01
 Tolima,2,1.6,25.0,Normal,2026-09-07 a 2026-11-01
-"Bogotá, D.C.",1,2.9,-66.0,Normal,2026-09-07 a 2026-11-01
-Caldas,1,1.3,-23.0,Normal,2026-09-07 a 2026-11-01
+"Bogotá, D.C.",1,2.7,-63.0,Normal,2026-09-07 a 2026-11-01
+Bolívar,1,1.3,-23.0,Normal,2026-09-07 a 2026-11-01
+Caldas,1,1.2,-17.0,Normal,2026-09-07 a 2026-11-01
 Chocó,1,0.1,900.0,Normal,2026-09-07 a 2026-11-01
 Córdoba,1,0.4,150.0,Normal,2026-09-07 a 2026-11-01
 Huila,1,0.6,67.0,Normal,2026-09-07 a 2026-11-01
-Norte de Santander,1,0.6,67.0,Normal,2026-09-07 a 2026-11-01
-Santander,1,1.4,-29.0,Normal,2026-09-07 a 2026-11-01
+Norte de Santander,1,0.5,100.0,Normal,2026-09-07 a 2026-11-01
+Santander,1,1.3,-23.0,Normal,2026-09-07 a 2026-11-01
 Amazonas,0,0.1,-100.0,Normal,2026-09-07 a 2026-11-01
 Arauca,0,0.1,-100.0,Normal,2026-09-07 a 2026-11-01
 "Archipiélago de San Andrés, Providencia y Santa Catalina",0,0.1,-100.0,Normal,2026-09-07 a 2026-11-01
@@ -19,7 +19,7 @@ Caquetá,0,0.0,,Normal,2026-09-07 a 2026-11-01
 Casanare,0,0.3,-100.0,Normal,2026-09-07 a 2026-11-01
 Cauca,0,0.1,-100.0,Normal,2026-09-07 a 2026-11-01
 Cesar,0,0.2,-100.0,Normal,2026-09-07 a 2026-11-01
-Cundinamarca,0,1.0,-100.0,Normal,2026-09-07 a 2026-11-01
+Cundinamarca,0,0.9,-100.0,Normal,2026-09-07 a 2026-11-01
 Guaviare,0,0.0,,Normal,2026-09-07 a 2026-11-01
 La Guajira,0,0.3,-100.0,Normal,2026-09-07 a 2026-11-01
 Magdalena,0,0.3,-100.0,Normal,2026-09-07 a 2026-11-01
@@ -27,6 +27,6 @@ Meta,0,0.1,-100.0,Normal,2026-09-07 a 2026-11-01
 Nariño,0,0.3,-100.0,Normal,2026-09-07 a 2026-11-01
 Putumayo,0,0.2,-100.0,Normal,2026-09-07 a 2026-11-01
 Risaralda,0,0.3,-100.0,Normal,2026-09-07 a 2026-11-01
-Sucre,0,0.2,-100.0,Normal,2026-09-07 a 2026-11-01
+Sucre,0,0.1,-100.0,Normal,2026-09-07 a 2026-11-01
 Valle del Cauca,0,0.7,-100.0,Normal,2026-09-07 a 2026-11-01
 Vichada,0,0.0,,Normal,2026-09-07 a 2026-11-01

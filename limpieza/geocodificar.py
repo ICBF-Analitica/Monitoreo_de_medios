@@ -18,7 +18,7 @@ Reglas para no confundir lugares (ver CODEBOOK.md, seccion 6):
 
 import re
 import pandas as pd
-from .reglas import norm, menciona_exterior
+from .reglas import norm, menciona_exterior, VOCABULARIO_EXTERIOR
 
 TOKEN_RE = re.compile(r"\w+")
 CONECTORES = {"de", "del", "la", "las", "el", "los", "y", "e"}
@@ -156,6 +156,9 @@ class Geocodificador:
         orig = TOKEN_RE.findall(str(titulo))
         toks = [norm(x) for x in orig]
         exterior = menciona_exterior(" ".join(toks))
+        # vocabulario propio de otro pais (Cesfam, Carabineros, Guardia Civil...): ni una ciudad grande basta para decir Colombia
+        # si no va con su departamento ("Cesfam de Cartagena" es Cartagena de Chile, nov-2026)
+        vocabulario_ext = bool(VOCABULARIO_EXTERIOR.search(" ".join(toks)))
         largas = [o for o in orig if len(o) > 3 and o.isalpha()]
         # en titulos "Con Mayuscula Inicial" la mayuscula no sirve como senal
         titulo_case = bool(largas) and sum(o[0].isupper() for o in largas) / len(largas) > 0.6
@@ -221,7 +224,8 @@ class Geocodificador:
                 ok = cap or titulo_case
             else:
                 ok = (cap or titulo_case) and (prep_antes(ini) or d_sig is not None)
-            if not ok or (clave in COLISION_EXTRANJERA and exterior and d_sig is None):
+            if not ok or (clave in COLISION_EXTRANJERA and exterior and d_sig is None) \
+                    or (vocabulario_ext and d_sig is None):
                 continue
 
             cods = self.idx_mpio[clave]
