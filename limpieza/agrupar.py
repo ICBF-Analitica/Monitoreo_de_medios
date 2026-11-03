@@ -86,7 +86,11 @@ def _numeros(t):
 def _nombres_propios(titulo):
     """Palabras con mayuscula que no estan al inicio del titular (apodos, colegios, personas)."""
     palabras = re.findall(r"\w+", str(titulo))
-    return {norm(p) for p in palabras[1:] if p[0].isupper()}
+    # lo que va entre comillas es un apodo o un nombre aunque abra el titular: "'Juancho Kily' sera enviado a la carcel"
+    # (sin esto, los titulares que empezaban por el apodo quedaban como hechos distintos, nov-2026)
+    entre_comillas = re.findall(r"[\"'‘’“”«»]([^\"'‘’“”«»]{3,40})[\"'‘’“”«»]", str(titulo))
+    citadas = {norm(p) for t in entre_comillas for p in re.findall(r"\w+", t) if p[0].isupper()}
+    return {norm(p) for p in palabras[1:] if p[0].isupper()} | citadas
 
 
 def _palabras_de_lugar(fila):

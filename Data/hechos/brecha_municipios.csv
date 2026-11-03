@@ -134,7 +134,7 @@ CodMpio,Municipio,Departamento,Latitud,Longitud,Registros,Hechos,HechosPor100,Vi
 08549,Piojó,Atlántico,10.749216,-75.107592,2,0,0.0,Pocos registros (menos de 10),5,Piojó (Atlántico)
 08558,Polonuevo,Atlántico,10.777363,-74.852981,3,1,33.3,Pocos registros (menos de 10),5,Polonuevo (Atlántico)
 08560,Ponedera,Atlántico,10.641779,-74.753885,5,0,0.0,Pocos registros (menos de 10),5,Ponedera (Atlántico)
-08573,Puerto Colombia,Atlántico,11.015322,-74.888627,10,0,0.0,Sin hechos en medios,1,Puerto Colombia (Atlántico)
+08573,Puerto Colombia,Atlántico,11.015322,-74.888627,10,1,10.0,Cobertura alta,4,Puerto Colombia (Atlántico)
 08606,Repelón,Atlántico,10.493357,-75.125534,6,0,0.0,Pocos registros (menos de 10),5,Repelón (Atlántico)
 08634,Sabanagrande,Atlántico,10.792453,-74.759496,10,0,0.0,Sin hechos en medios,1,Sabanagrande (Atlántico)
 08638,Sabanalarga,Atlántico,10.632091,-74.921256,12,0,0.0,Sin hechos en medios,1,Sabanalarga (Atlántico)

@@ -41,7 +41,7 @@ ALIAS_MUNICIPIO = {
     "buga": "GUADALAJARA DE BUGA",
 }
 # Nombres repetidos sin capital entre los candidatos: cual elegir si la nota no dice el departamento
-PREFERIDO = {"rionegro": "05615"}
+PREFERIDO = {"rionegro": "05615", "puerto colombia": "08573"}   # el de Guainia es un area no municipalizada
 # Solo se aceptan si van seguidos del departamento ("Colombia, Huila")
 REQUIERE_DEPTO = {"colombia"}
 ALIAS_DEPTO = {
