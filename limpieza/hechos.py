@@ -18,7 +18,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from . import reglas as R
+from .analitica import alertas, calcular_brecha, descargar_registros_policia, seguimiento
 from .geocodificar import Geocodificador
 from .limpiar import DATA
 from .registro import DIVIPOLA, cargar_perfil_medios, registro_de_anio
@@ -72,11 +72,23 @@ def generar_hechos(entrada=DATA, salida=CARPETA):
         registros.append(reg)
         noticias.append(notas)
 
-    hechos, noticias_hechos = construir_tablas(pd.concat(registros, ignore_index=True), pd.concat(noticias, ignore_index=True))
+    reg_todo, notas_todo = pd.concat(registros, ignore_index=True), pd.concat(noticias, ignore_index=True)
+    hechos, noticias_hechos = construir_tablas(reg_todo, notas_todo)
     if hechos.empty or noticias_hechos.empty:
         raise ValueError("el registro de hechos quedo vacio: se conservan los archivos anteriores")
+    # seguimiento del caso (dias que lo siguen los medios, dias hasta captura y condena) y alertas por departamento
+    hechos = hechos.merge(seguimiento(notas_todo), on="IdHecho", how="left")
+    tablas = [("hechos", hechos), ("noticias_hechos", noticias_hechos), ("alertas_departamentos", alertas(hechos))]
+    # brecha de visibilidad: necesita descargar los registros de la Policia; si falla, quedan los archivos anteriores
+    try:
+        policia = descargar_registros_policia(PRIMER_ANIO, hoy.year)
+        deptos, mpios, res = calcular_brecha(reg_todo, policia, pd.Timestamp(f"{PRIMER_ANIO}-01-01"))
+        tablas += [("brecha_departamentos", deptos), ("brecha_municipios", mpios)]
+        print(f"Brecha: {res['registros']:,} registros policiales y {res['hechos']:,} hechos en medios, {res['desde']} a {res['hasta']}")
+    except Exception as e:
+        print("AVISO: no se pudo calcular la brecha de visibilidad:", repr(e))
     # se escribe a temporales y se reemplaza al final: nunca queda un archivo a medias
-    for nombre, tabla in (("hechos", hechos), ("noticias_hechos", noticias_hechos)):
+    for nombre, tabla in tablas:
         tmp = salida / f"{nombre}.tmp"
         tabla.to_csv(tmp, index=False, encoding="utf-8")
         tmp.replace(salida / f"{nombre}.csv")

@@ -1,0 +1,32 @@
+Departamento,Recientes,Esperados,Variacion,Alerta,Periodo
+Quindío,3,0.2,1400.0,Aumento,2026-09-07 a 2026-11-01
+Antioquia,4,3.7,8.0,Normal,2026-09-07 a 2026-11-01
+Bolívar,2,1.2,67.0,Normal,2026-09-07 a 2026-11-01
+Tolima,2,1.5,33.0,Normal,2026-09-07 a 2026-11-01
+"Bogotá, D.C.",1,2.6,-62.0,Normal,2026-09-07 a 2026-11-01
+Caldas,1,1.1,-9.0,Normal,2026-09-07 a 2026-11-01
+Chocó,1,0.1,900.0,Normal,2026-09-07 a 2026-11-01
+Córdoba,1,0.4,150.0,Normal,2026-09-07 a 2026-11-01
+Huila,1,0.6,67.0,Normal,2026-09-07 a 2026-11-01
+Norte de Santander,1,0.5,100.0,Normal,2026-09-07 a 2026-11-01
+Santander,1,1.2,-17.0,Normal,2026-09-07 a 2026-11-01
+Amazonas,0,0.1,-100.0,Normal,2026-09-07 a 2026-11-01
+Arauca,0,0.1,-100.0,Normal,2026-09-07 a 2026-11-01
+"Archipiélago de San Andrés, Providencia y Santa Catalina",0,0.1,-100.0,Normal,2026-09-07 a 2026-11-01
+Atlántico,0,0.7,-100.0,Normal,2026-09-07 a 2026-11-01
+Boyacá,0,0.4,-100.0,Normal,2026-09-07 a 2026-11-01
+Caquetá,0,0.0,,Normal,2026-09-07 a 2026-11-01
+Casanare,0,0.3,-100.0,Normal,2026-09-07 a 2026-11-01
+Cauca,0,0.1,-100.0,Normal,2026-09-07 a 2026-11-01
+Cesar,0,0.2,-100.0,Normal,2026-09-07 a 2026-11-01
+Cundinamarca,0,0.9,-100.0,Normal,2026-09-07 a 2026-11-01
+Guaviare,0,0.0,,Normal,2026-09-07 a 2026-11-01
+La Guajira,0,0.2,-100.0,Normal,2026-09-07 a 2026-11-01
+Magdalena,0,0.3,-100.0,Normal,2026-09-07 a 2026-11-01
+Meta,0,0.1,-100.0,Normal,2026-09-07 a 2026-11-01
+Nariño,0,0.3,-100.0,Normal,2026-09-07 a 2026-11-01
+Putumayo,0,0.2,-100.0,Normal,2026-09-07 a 2026-11-01
+Risaralda,0,0.2,-100.0,Normal,2026-09-07 a 2026-11-01
+Sucre,0,0.1,-100.0,Normal,2026-09-07 a 2026-11-01
+Valle del Cauca,0,0.6,-100.0,Normal,2026-09-07 a 2026-11-01
+Vichada,0,0.0,,Normal,2026-09-07 a 2026-11-01
