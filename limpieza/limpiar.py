@@ -196,9 +196,7 @@ def limpiar_datos(entrada=DATA, salida=None):
         else:
             pais_n[f] = "sin_datos"
 
-    # solo se clasifican las noticias que estan en df_resultado_final (el resto no se publica)
-    titulos = set(res["titulo"])
-    cons = cons[cons["titulo"].isin(titulos)].copy()
+    # se clasifican TODAS las noticias: las que no tienen ninguna palabra del lexico tambien cuentan en el tablero
     print(f"Limpieza: clasificando {len(cons):,} noticias...")
     geo = Geocodificador(DIVIPOLA)
     ambito, ciudad, depto = [], [], []
@@ -234,6 +232,18 @@ def limpiar_datos(entrada=DATA, salida=None):
         "maltrato": res["maltrato_n"].fillna(0).astype(int),
         "Año": res["Año"], "Mes": res["Mes"], "DiaSemana": res["DiaSemana"], "DiaNumero": res["DiaNumero"],
         "tokens": res["tokens"], "Puntuacion": res["Puntuacion"].astype(int), "Word": res["Word"]})
+
+    # Noticias sin ninguna palabra del lexico de sentimiento: la v1 las descartaba y "Total Noticias" solo veia la mitad.
+    # Entran con una fila de palabra vacia; los graficos de palabras filtran las vacias (tablero/ajustes_conteo.py).
+    validas = cons[(cons["Ambito"] != "Exterior") & (cons["excluir"] == "") & (cons["Año"] >= 2023)
+                   & ~cons["titulo"].isin(set(out["titulo"]))]
+    sin_palabras = pd.DataFrame({
+        "titulo": validas["titulo"], "link": validas["link"], "fuente": validas["fuente_n"],
+        "ciudad": validas["ciudad_n"], "departamento": validas["departamento_n"], "maltrato": validas["maltrato_n"],
+        "Año": validas["Año"], "Mes": validas["Mes"], "DiaSemana": validas["DiaSemana"], "DiaNumero": validas["DiaNumero"],
+        "tokens": "", "Puntuacion": pd.NA, "Word": ""})
+    out = pd.concat([out, sin_palabras], ignore_index=True)
+    out["Puntuacion"] = out["Puntuacion"].astype("Int64")
     destino_xlsx = salida / "df_resultado_final.xlsx"
     temporal = salida / "df_resultado_final.tmp.xlsx"
     with pd.ExcelWriter(temporal, engine="openpyxl") as w:   # sin hipervinculos: los links largos inflan el archivo
