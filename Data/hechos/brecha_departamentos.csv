@@ -1,34 +1,34 @@
-CodDpto,Departamento,Registros,Hechos,HechosPor100
-05,Antioquia,3425,330,9.6
-08,Atlántico,687,56,8.2
-11,"Bogotá, D.C.",6621,223,3.4
-13,Bolívar,624,108,17.3
-15,Boyacá,555,21,3.8
-17,Caldas,505,65,12.9
-18,Caquetá,220,3,1.4
-19,Cauca,591,10,1.7
-20,Cesar,546,29,5.3
-23,Córdoba,208,18,8.7
-25,Cundinamarca,1110,82,7.4
-27,Chocó,162,5,3.1
-41,Huila,521,37,7.1
-44,La Guajira,131,21,16.0
-47,Magdalena,417,17,4.1
-50,Meta,755,16,2.1
-52,Nariño,594,17,2.9
-54,Norte de Santander,542,29,5.4
-63,Quindío,274,19,6.9
-66,Risaralda,468,29,6.2
-68,Santander,1223,77,6.3
-70,Sucre,341,9,2.6
-73,Tolima,895,95,10.6
-76,Valle del Cauca,1979,51,2.6
-81,Arauca,123,6,4.9
-85,Casanare,219,15,6.8
-86,Putumayo,265,11,4.2
-88,San Andrés y Providencia,33,3,9.1
-91,Amazonas,70,3,4.3
-94,Guainía,30,1,3.3
-95,Guaviare,137,5,3.6
-97,Vaupés,43,1,2.3
-99,Vichada,60,1,1.7
+CodDpto,Departamento,Registros,Hechos,HechosPor100,Periodo
+05,Antioquia,3425,330,9.6,ene 2024 a jul 2026
+08,Atlántico,687,56,8.2,ene 2024 a jul 2026
+11,"Bogotá, D.C.",6621,223,3.4,ene 2024 a jul 2026
+13,Bolívar,624,108,17.3,ene 2024 a jul 2026
+15,Boyacá,555,21,3.8,ene 2024 a jul 2026
+17,Caldas,505,65,12.9,ene 2024 a jul 2026
+18,Caquetá,220,3,1.4,ene 2024 a jul 2026
+19,Cauca,591,10,1.7,ene 2024 a jul 2026
+20,Cesar,546,29,5.3,ene 2024 a jul 2026
+23,Córdoba,208,18,8.7,ene 2024 a jul 2026
+25,Cundinamarca,1110,82,7.4,ene 2024 a jul 2026
+27,Chocó,162,5,3.1,ene 2024 a jul 2026
+41,Huila,521,37,7.1,ene 2024 a jul 2026
+44,La Guajira,131,21,16.0,ene 2024 a jul 2026
+47,Magdalena,417,17,4.1,ene 2024 a jul 2026
+50,Meta,755,16,2.1,ene 2024 a jul 2026
+52,Nariño,594,17,2.9,ene 2024 a jul 2026
+54,Norte de Santander,542,29,5.4,ene 2024 a jul 2026
+63,Quindío,274,19,6.9,ene 2024 a jul 2026
+66,Risaralda,468,29,6.2,ene 2024 a jul 2026
+68,Santander,1223,77,6.3,ene 2024 a jul 2026
+70,Sucre,341,9,2.6,ene 2024 a jul 2026
+73,Tolima,895,95,10.6,ene 2024 a jul 2026
+76,Valle del Cauca,1979,51,2.6,ene 2024 a jul 2026
+81,Arauca,123,6,4.9,ene 2024 a jul 2026
+85,Casanare,219,15,6.8,ene 2024 a jul 2026
+86,Putumayo,265,11,4.2,ene 2024 a jul 2026
+88,San Andrés y Providencia,33,3,9.1,ene 2024 a jul 2026
+91,Amazonas,70,3,4.3,ene 2024 a jul 2026
+94,Guainía,30,1,3.3,ene 2024 a jul 2026
+95,Guaviare,137,5,3.6,ene 2024 a jul 2026
+97,Vaupés,43,1,2.3,ene 2024 a jul 2026
+99,Vichada,60,1,1.7,ene 2024 a jul 2026

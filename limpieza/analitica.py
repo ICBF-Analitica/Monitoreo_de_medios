@@ -22,6 +22,7 @@ ORDEN_ESTADO = {"denuncia": 1, "rescate": 2, "captura": 3, "judicializacion": 4,
 NOMBRE_ESTADO = {"denuncia": "Denuncia", "rescate": "Rescate", "captura": "Captura", "judicializacion": "Judicialización",
                  "condena": "Condena", "absolucion": "Absolución", "ND": "Sin dato"}
 MIN_REGISTROS = 10      # por debajo, la proporcion de un municipio no es confiable
+MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"]
 
 
 # ---------------------------------------------------------------- 1. brecha de visibilidad
@@ -63,6 +64,8 @@ def calcular_brecha(reg, policia, desde):
     por_dpto["HechosPor100"] = (por_dpto["Hechos"] / por_dpto["Registros"].where(por_dpto["Registros"] > 0) * 100).round(1)
     departamentos = por_dpto[["cod_dpto", "Departamento", "Registros", "Hechos", "HechosPor100"]].rename(
         columns={"cod_dpto": "CodDpto"})
+    # periodo comparado, para que el tablero lo diga junto a la cifra ("ene 2024 a jul 2026")
+    departamentos["Periodo"] = f"{MESES[desde.month - 1]} {desde.year} a {MESES[fin.month - 1]} {fin.year}"
 
     reg_m = pol.groupby("cod_mpio")["cantidad"].sum()
     hec_m = h[h["cod_divipola"] != ""].groupby("cod_divipola").size()
