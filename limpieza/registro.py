@@ -24,7 +24,7 @@ SIN_LUGAR = {"municipio": "", "cod_divipola": "", "departamento": "", "cod_dpto"
 
 # palabras que delatan que la noticia es de Colombia aunque el lugar no sea inequivoco ("Eln", "ICBF", "Colombia")
 SENALES_COLOMBIA = re.compile(
-    r"\bcolombia\w*|\bicbf\b|\bbienestar familiar\b|\beln\b|\bfarc\b|\bclan del golfo\b|\bpetro\b|\bprocuraduria\b|"
+    r"\bcolombia\w*|\b(ex)?edil(es)?\b|\bauxiliar(es)? de policia\b|\bicbf\b|\bbienestar familiar\b|\beln\b|\bfarc\b|\bclan del golfo\b|\bpetro\b|\bprocuraduria\b|"
     r"\bdefensoria del pueblo\b|\bmedicina legal\b|\bgaula\b|\bsijin\b|\bdijin\b|\bfiscalia general de la nacion\b")
 
 
@@ -41,6 +41,9 @@ def decidir_ambito(ubic, pais_medio):
         # "Cordoba", "Valencia"... a secas solo se aceptan si el medio es colombiano
         if ubic["riesgo_colision"] and pais_medio != "colombia":
             return ("exterior" if pais_medio == "exterior" else "ND"), "lugar_dudoso"
+        # Cartagena, Pamplona, Malaga... nombradas SOLO por un medio extranjero suelen ser las de afuera (nov-2026)
+        if pais_medio == "exterior" and ubic.get("homonimo_exterior") and not ubic.get("senal_colombia"):
+            return "exterior", "homonimo"
         # un pueblo pequeno nombrado por un medio extranjero suele ser un homonimo de afuera
         if pais_medio == "exterior" and not ubic["ubic_segura"]:
             return "exterior", "medio"

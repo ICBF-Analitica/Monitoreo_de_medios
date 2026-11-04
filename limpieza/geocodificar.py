@@ -97,6 +97,10 @@ COMUNES = {
     "amalfi", "hispania", "tamesis", "valparaiso", "miraflores", "aquitania", "san cristobal",
     "copacabana", "california",
 }
+# Ciudades colombianas con un homonimo conocido afuera (Cartagena de Chile y de Espana, Pamplona y Malaga de Espana) o que
+# tambien son nombre de persona (Leticia): si solo las nombra un medio extranjero, sin departamento, no se asume Colombia
+# sin Cartagena: El Universal de Cartagena figura como medio extranjero (homonimo del de Mexico) y sus noticias se perdian
+HOMONIMOS_EXTERIOR = {"pamplona", "malaga", "leticia"}
 # Si la nota habla del exterior, estos nombres no se toman como Colombia
 COLISION_EXTRANJERA = {
     "madrid", "granada", "cordoba", "sevilla", "valencia", "toledo", "santiago", "florencia",
@@ -244,19 +248,20 @@ class Geocodificador:
                                            and clave not in COLISION_EXTRANJERA)
             # riesgo de que sea un lugar del exterior con el mismo nombre (Cordoba, Valencia...)
             colision = clave in COLISION_EXTRANJERA and d_sig is None
-            candidatos.append((cods, ini > 0 and toks[ini - 1] == "en", seguro, colision))
+            candidatos.append((cods, ini > 0 and toks[ini - 1] == "en", seguro, colision,
+                               clave in HOMONIMOS_EXTERIOR and d_sig is None))
 
         # 4. Elegir: municipio resuelto (preferir el que va despues de "en") > departamento > nada
-        resueltos = [(c[0], en, seg, col) for c, en, seg, col in candidatos if len(c) == 1]
+        resueltos = [(c[0], en, seg, col, hom) for c, en, seg, col, hom in candidatos if len(c) == 1]
         if resueltos:
-            cod, _, seguro, colision = next((r for r in resueltos if r[1]), resueltos[0])
-            return self._resultado(cod, 1, seguro, colision)
+            cod, _, seguro, colision, homonimo = next((r for r in resueltos if r[1]), resueltos[0])
+            return {**self._resultado(cod, 1, seguro, colision), "homonimo_exterior": homonimo}
         if deptos:
             cod_d, seguro, colision = deptos[0]
             return self._resultado(self.capital[cod_d], 2, seguro, colision, cod_dpto=cod_d)
-        ambiguos = [c for c, _, _, _ in candidatos]
+        ambiguos = [c for c, _, _, _, _ in candidatos]
         # "Toledo" (2 municipios en Colombia) tambien es una ciudad de Espana: sin apoyo del medio no se asume Colombia
-        cand_colision = bool(ambiguos) and all(col for _, _, _, col in candidatos)
+        cand_colision = bool(ambiguos) and all(col for _, _, _, col, _ in candidatos)
         return {"candidatos_colision": cand_colision, "municipio": "", "cod_divipola": "", "departamento": "", "cod_dpto": "",
                 "geo_precision": 3, "lat": None, "lon": None, "ubic_segura": False,
                 "riesgo_colision": False, "mpio_grande": False,

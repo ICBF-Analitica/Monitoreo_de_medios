@@ -726,7 +726,7 @@ CodMpio,Municipio,Departamento,Latitud,Longitud,Registros,Hechos,HechosPor100,Vi
 54418,Lourdes,Norte de Santander,7.945631,-72.832376,2,1,50.0,Pocos registros (menos de 10),5,Lourdes (Norte de Santander)
 54480,Mutiscua,Norte de Santander,7.300469,-72.747169,1,0,0.0,Pocos registros (menos de 10),5,Mutiscua (Norte de Santander)
 54498,Ocaña,Norte de Santander,8.248574,-73.35607,79,2,2.5,Cobertura esperada,3,Ocaña (Norte de Santander)
-54518,Pamplona,Norte de Santander,7.372802,-72.647714,14,7,50.0,Cobertura alta,4,Pamplona (Norte de Santander)
+54518,Pamplona,Norte de Santander,7.372802,-72.647714,14,4,28.6,Cobertura alta,4,Pamplona (Norte de Santander)
 54520,Pamplonita,Norte de Santander,7.436745,-72.639111,2,1,50.0,Pocos registros (menos de 10),5,Pamplonita (Norte de Santander)
 54553,Puerto Santander,Norte de Santander,8.359993,-72.411363,5,0,0.0,Pocos registros (menos de 10),5,Puerto Santander (Norte de Santander)
 54599,Ragonvalia,Norte de Santander,7.577861,-72.476708,1,0,0.0,Pocos registros (menos de 10),5,Ragonvalia (Norte de Santander)
@@ -989,7 +989,7 @@ CodMpio,Municipio,Departamento,Latitud,Longitud,Registros,Hechos,HechosPor100,Vi
 86885,Villagarzón,Putumayo,1.028821,-76.61721,26,0,0.0,Sin hechos en medios,1,Villagarzón (Putumayo)
 88001,San Andrés,"Archipiélago de San Andrés, Providencia y Santa Catalina",12.578108,-81.707181,29,3,10.3,Cobertura alta,4,"San Andrés (Archipiélago de San Andrés, Providencia y Santa Catalina)"
 88564,Providencia,"Archipiélago de San Andrés, Providencia y Santa Catalina",13.373185,-81.368386,4,0,0.0,Pocos registros (menos de 10),5,"Providencia (Archipiélago de San Andrés, Providencia y Santa Catalina)"
-91001,Leticia,Amazonas,-4.19895,-69.941721,59,1,1.7,Cobertura baja,2,Leticia (Amazonas)
+91001,Leticia,Amazonas,-4.19895,-69.941721,59,0,0.0,Sin hechos en medios,1,Leticia (Amazonas)
 91405,La Chorrera,Amazonas,-1.442617,-72.791889,1,0,0.0,Pocos registros (menos de 10),5,La Chorrera (Amazonas)
 91460,Mirití - Paraná,Amazonas,-0.888833,-70.98893,1,0,0.0,Pocos registros (menos de 10),5,Mirití - Paraná (Amazonas)
 91540,Puerto Nariño,Amazonas,-3.779934,-70.364937,6,0,0.0,Pocos registros (menos de 10),5,Puerto Nariño (Amazonas)
