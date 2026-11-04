@@ -177,6 +177,8 @@ def limpiar_datos(entrada=DATA, salida=None):
     cons["titulo"] = cons["titulo"].astype(str).str.strip()
     cons = cons.drop_duplicates("titulo")
     res = pd.read_excel(entrada / "df_resultado_final.xlsx")
+    # si el archivo ya paso por la limpieza (al correrla otra vez a mano) trae filas sin palabra: se quitan y se vuelven a armar
+    res = res[res["tokens"].fillna("").astype(str) != ""]
     res["titulo"] = res["titulo"].astype(str).str.strip()
     n_filas0, n_tit0 = len(res), res["titulo"].nunique()
     if n_filas0 == 0 or len(cons) == 0:
@@ -222,7 +224,7 @@ def limpiar_datos(entrada=DATA, salida=None):
     res = res[res["excluir"].fillna("") == ""]                 # clima, farandula, otros
     res = res[res["Ambito"].fillna("Sin determinar") != "Exterior"]   # noticias del exterior
     res = res[~res["tokens"].isin(MAL_TRADUCIDAS)]             # palabras mal traducidas
-    res = res[res["Año"] >= 2023]                              # anos atipicos
+    res = res[res["Año"] >= 2024]   # 2023 solo tiene ~1.100 noticias (abr-dic) y la grafica por fecha ya arrancaba en 2024
     if res.empty:
         raise ValueError("la limpieza dejo el archivo vacio: se conserva el original")
 
@@ -235,7 +237,7 @@ def limpiar_datos(entrada=DATA, salida=None):
 
     # Noticias sin ninguna palabra del lexico de sentimiento: la v1 las descartaba y "Total Noticias" solo veia la mitad.
     # Entran con una fila de palabra vacia; los graficos de palabras filtran las vacias (tablero/ajustes_conteo.py).
-    validas = cons[(cons["Ambito"] != "Exterior") & (cons["excluir"] == "") & (cons["Año"] >= 2023)
+    validas = cons[(cons["Ambito"] != "Exterior") & (cons["excluir"] == "") & (cons["Año"] >= 2024)
                    & ~cons["titulo"].isin(set(out["titulo"]))]
     sin_palabras = pd.DataFrame({
         "titulo": validas["titulo"], "link": validas["link"], "fuente": validas["fuente_n"],
