@@ -233,7 +233,9 @@ def limpiar_datos(entrada=DATA, salida=None):
         "ciudad": res["ciudad_n"], "departamento": res["departamento_n"],
         "maltrato": res["maltrato_n"].fillna(0).astype(int),
         "Año": res["Año"], "Mes": res["Mes"], "DiaSemana": res["DiaSemana"], "DiaNumero": res["DiaNumero"],
-        "tokens": res["tokens"], "Puntuacion": res["Puntuacion"].astype(int), "Word": res["Word"]})
+        "tokens": res["tokens"], "Puntuacion": res["Puntuacion"].astype(int), "Word": res["Word"],
+        # pais de la noticia: "Colombia" (confirmada) o "Sin determinar"; las del exterior ya no estan. Es un filtro del tablero (4-nov-2026)
+        "Ambito": res["Ambito"].fillna("Sin determinar")})
 
     # Noticias sin ninguna palabra del lexico de sentimiento: la v1 las descartaba y "Total Noticias" solo veia la mitad.
     # Entran con una fila de palabra vacia; los graficos de palabras filtran las vacias (tablero/ajustes_conteo.py).
@@ -243,7 +245,7 @@ def limpiar_datos(entrada=DATA, salida=None):
         "titulo": validas["titulo"], "link": validas["link"], "fuente": validas["fuente_n"],
         "ciudad": validas["ciudad_n"], "departamento": validas["departamento_n"], "maltrato": validas["maltrato_n"],
         "Año": validas["Año"], "Mes": validas["Mes"], "DiaSemana": validas["DiaSemana"], "DiaNumero": validas["DiaNumero"],
-        "tokens": "", "Puntuacion": pd.NA, "Word": ""})
+        "tokens": "", "Puntuacion": pd.NA, "Word": "", "Ambito": validas["Ambito"].fillna("Sin determinar")})
     out = pd.concat([out, sin_palabras], ignore_index=True)
     out["Puntuacion"] = out["Puntuacion"].astype("Int64")
     destino_xlsx = salida / "df_resultado_final.xlsx"
