@@ -1,13 +1,13 @@
 Departamento,Recientes,Esperados,Variacion,Alerta,Periodo
 Huila,4,1.8,122.0,Aumento,2026-10-01 a 2026-11-25
-Norte de Santander,3,1.0,200.0,Aumento,2026-10-01 a 2026-11-25
+Norte de Santander,3,0.9,233.0,Aumento,2026-10-01 a 2026-11-25
 Putumayo,3,0.6,400.0,Aumento,2026-10-01 a 2026-11-25
 Quindío,3,0.7,329.0,Aumento,2026-10-01 a 2026-11-25
 Antioquia,5,10.0,-50.0,Disminución,2026-10-01 a 2026-11-25
 "Bogotá, D.C.",10,7.5,33.0,Normal,2026-10-01 a 2026-11-25
 Bolívar,5,3.2,56.0,Normal,2026-10-01 a 2026-11-25
 Santander,3,3.5,-14.0,Normal,2026-10-01 a 2026-11-25
-Tolima,3,4.3,-30.0,Normal,2026-10-01 a 2026-11-25
+Tolima,3,4.4,-32.0,Normal,2026-10-01 a 2026-11-25
 Valle del Cauca,3,1.6,87.0,Normal,2026-10-01 a 2026-11-25
 Atlántico,2,2.2,-9.0,Normal,2026-10-01 a 2026-11-25
 Caldas,2,3.3,-39.0,Normal,2026-10-01 a 2026-11-25
@@ -18,7 +18,7 @@ Cundinamarca,1,2.8,-64.0,Normal,2026-10-01 a 2026-11-25
 Amazonas,0,0.1,-100.0,Normal,2026-10-01 a 2026-11-25
 Arauca,0,0.2,-100.0,Normal,2026-10-01 a 2026-11-25
 "Archipiélago de San Andrés, Providencia y Santa Catalina",0,0.2,-100.0,Normal,2026-10-01 a 2026-11-25
-Boyacá,0,1.0,-100.0,Normal,2026-10-01 a 2026-11-25
+Boyacá,0,0.9,-100.0,Normal,2026-10-01 a 2026-11-25
 Caquetá,0,0.1,-100.0,Normal,2026-10-01 a 2026-11-25
 Casanare,0,0.9,-100.0,Normal,2026-10-01 a 2026-11-25
 Cauca,0,0.3,-100.0,Normal,2026-10-01 a 2026-11-25
